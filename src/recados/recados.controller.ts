@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 
@@ -28,5 +30,18 @@ export class RecadosController {
   @Post()
   create(@Body() body: any) {
     return body;
+  }
+
+  @Patch(':id')
+  updated(@Param('id') id: any, @Body() body: any) {
+    return {
+      id,
+      ...body,
+    };
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: any, @Body() body: any) {
+    return `Essa rota apaga o ID ${id}`;
   }
 }
