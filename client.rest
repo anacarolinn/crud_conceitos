@@ -2,7 +2,10 @@
 
 # RECADOS
 ## Lista todos os recados
-GET {{baseUrl}}/recados
+GET {{baseUrl}}/recados/?limit=15&offset=10 
+
+// ?limit=15&offset=10 são parametros de query
+
 ### Lista apenas um recado
 GET {{baseUrl}}/recados/15
 ### Cria um recado
