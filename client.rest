@@ -7,23 +7,30 @@ GET {{baseUrl}}/recados/?limit=15&offset=10
 // ?limit=15&offset=10 são parametros de query
 
 ### Lista apenas um recado
-GET {{baseUrl}}/recados/15
+GET {{baseUrl}}/recados/2
 ### Cria um recado
 POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "recado": "Este é o recado que estou enviando",
-    "nova chave": "outro valor"
+
+    "texto": "4 Novo Recado",
+    "de": "Joana",
+    "para": "João",
+    "lido": false,
+    "data": "2024-09-25T00:51:24.786Z"
 }
 ### Atualiza um recado
-PATCH {{baseUrl}}/recados/1/
+PATCH {{baseUrl}}/recados/2/
 Content-Type: application/json
 
 {
-    "recado": "Este é o asdgfh que estou enviando",
-    "atualizar": true
+    "texto": "Atualizar Recado",
+    "de": "Joana",
+    "para": "João",
+    "lido": false,
+    "data": "2024-09-25T00:51:24.786Z"
 }
 
 ### Essa rota apaga um recado
-DELETE {{baseUrl}}/recados/10
+DELETE {{baseUrl}}/recados/2
