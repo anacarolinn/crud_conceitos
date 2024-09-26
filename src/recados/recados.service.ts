@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Recado } from './entities/recado.entity';
 
 @Injectable()
@@ -15,6 +15,10 @@ export class RecadosService {
     },
   ];
 
+  throwNotFoundError() {
+    throw new NotFoundException('Recado não encontrado');
+  }
+
   findAll() {
     return this.recados;
   }
@@ -23,7 +27,8 @@ export class RecadosService {
     const recado = this.recados.find(item => item.id === +id); // o sinal de + antes de id converte ele para number, já que aqui ele ta sendo como uma sting
 
     if (recado) return recado;
-    throw new HttpException('Esse erro é do servidor.', HttpStatus.NOT_FOUND);
+    //throw new HttpException('Esse erro é do servidor.', HttpStatus.NOT_FOUND); // HttpStatus.NOT_FOUND = a usar 404
+    this.throwNotFoundError();
   }
 
   create(body: any) {
@@ -42,6 +47,10 @@ export class RecadosService {
       item => item.id === +id,
     );
 
+    if (recadoExistenteIndex < 0) {
+      this.throwNotFoundError();
+    }
+
     if (recadoExistenteIndex >= 0) {
       const recadoExistente = this.recados[recadoExistenteIndex];
 
@@ -50,6 +59,7 @@ export class RecadosService {
         ...body,
       };
     }
+    return this.recados[recadoExistenteIndex];
   }
 
   remove(id: string) {
@@ -57,8 +67,15 @@ export class RecadosService {
       // o findIndex é um método de procura do indice
       item => item.id === +id,
     );
-    if (recadoExistenteIndex >= 0) {
-      this.recados.splice(recadoExistenteIndex, 1);
+
+    if (recadoExistenteIndex < 0) {
+      this.throwNotFoundError();
     }
+
+    const recado = this.recados[recadoExistenteIndex];
+
+    this.recados.splice(recadoExistenteIndex, 1);
+
+    return recado;
   }
 }

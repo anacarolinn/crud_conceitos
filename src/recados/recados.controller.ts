@@ -40,11 +40,11 @@ export class RecadosController {
 
   @Patch(':id')
   updated(@Param('id') id: any, @Body() body: any) {
-    this.recadosService.update(id, body);
+    return this.recadosService.update(id, body);
   }
 
   @Delete(':id')
   remove(@Param('id') id: any) {
-    this.recadosService.remove(id);
+    return this.recadosService.remove(id);
   }
 }
