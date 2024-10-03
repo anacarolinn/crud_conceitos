@@ -16,8 +16,7 @@ Content-Type: application/json
     "texto": "Ana Ca",
     "de": "45516565",
     "para": "João",
-    "lido": false,
-    "data": "2024-09-25T00:51:24.786Z"
+    "bla": "dsfjjsdj"
 }
 ### Atualiza um recado
 PATCH {{baseUrl}}/recados/3/
@@ -25,7 +24,8 @@ Content-Type: application/json
 
 {
     "texto": "akdas",
-    "lido": true
+    "lido": true,
+    "HASHDA": 23
 }
 
 ### Essa rota apaga um recado
