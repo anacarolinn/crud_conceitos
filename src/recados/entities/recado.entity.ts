@@ -1,8 +1,34 @@
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+
+@Entity()
 export class Recado {
-  id: number; // não precisa disso, pois é gerado automaticamente
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ type: 'varchar', length: 255 }) // poderia passar algumas informações a mais de tipagem, mas se eu não declarar nada vai ser só mais uma coluna de texto
   texto: string;
+
+  @Column({ type: 'varchar', length: 50 })
   de: string;
+
+  @Column({ type: 'varchar', length: 50 })
   para: string;
-  lido: boolean; // não precisa saber na hora pois ao criar não vai estar lido
-  data: Date; // pode ser gerado automaticamente ao criar
+
+  @Column({ default: false })
+  lido: boolean;
+
+  @Column()
+  data: Date; // createdAt
+
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @UpdateDateColumn()
+  updateddAt?: Date;
 }

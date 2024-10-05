@@ -2,31 +2,28 @@
 
 # RECADOS
 ## Lista todos os recados
-GET {{baseUrl}}/recados/?limit=15&offset=10 
+GET {{baseUrl}}/recados/?limit=10&offset=10 
 
 // ?limit=15&offset=10 são parametros de query
 
 ### Lista apenas um recado
-GET {{baseUrl}}/recados/3
+GET {{baseUrl}}/recados/2
 ### Cria um recado
 POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "Ana Ca",
-    "de": "45516565",
-    "para": "João",
-    "bla": "dsfjjsdj"
+    "texto": "Joana",
+    "de": "Ana",
+    "para": "João"
 }
 ### Atualiza um recado
-PATCH {{baseUrl}}/recados/3/
+PATCH {{baseUrl}}/recados/2/
 Content-Type: application/json
 
 {
-    "texto": "akdas",
-    "lido": true,
-    "HASHDA": 23
+    "lido": false
 }
 
 ### Essa rota apaga um recado
-DELETE {{baseUrl}}/recados/2
+DELETE {{baseUrl}}/recados/1/
