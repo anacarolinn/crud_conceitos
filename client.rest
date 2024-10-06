@@ -7,15 +7,15 @@ GET {{baseUrl}}/recados/?limit=10&offset=10
 // ?limit=15&offset=10 são parametros de query
 
 ### Lista apenas um recado
-GET {{baseUrl}}/recados/2
+GET {{baseUrl}}/recados/12
 ### Cria um recado
 POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "Joana",
-    "de": "Ana",
-    "para": "João"
+    "texto": "Recado de ID 12",
+    "deId": 12,
+    "paraId": 11
 }
 ### Atualiza um recado
 PATCH {{baseUrl}}/recados/2/
@@ -43,9 +43,9 @@ POST {{baseUrl}}/pessoas/
 Content-Type: application/json
 
 {
-    "email": "anacarolina13698@gmail.com",
-    "password": "123456",
-    "nome": "Luiz"
+    "email": "joao@gmail.com",
+    "password": "9984884",
+    "nome": "João"
 }
 
 ### Atualiza um pessoa
