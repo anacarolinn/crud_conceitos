@@ -18,10 +18,11 @@ Content-Type: application/json
     "paraId": 10
     }
 ### Atualiza um recado
-PATCH {{baseUrl}}/recados/2/
+PATCH {{baseUrl}}/recados/15/
 Content-Type: application/json
 
 {
+    "texto": "De leo para pablo",
     "lido": false
 }
 
