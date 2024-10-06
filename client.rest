@@ -2,7 +2,7 @@
 
 # RECADOS
 ## Lista todos os recados
-GET {{baseUrl}}/recados/?limit=10&offset=10 
+GET {{baseUrl}}/recados/?limit=10&offset=0
 
 // ?limit=15&offset=10 são parametros de query
 
@@ -13,7 +13,7 @@ POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "De Pablo para leo",
+    "texto": "Criação aleatoria de recados",
     "deId": 14,
     "paraId": 10
     }
