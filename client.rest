@@ -13,10 +13,10 @@ POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "Recado de ID 12",
-    "deId": 12,
-    "paraId": 11
-}
+    "texto": "De Pablo para leo",
+    "deId": 14,
+    "paraId": 10
+    }
 ### Atualiza um recado
 PATCH {{baseUrl}}/recados/2/
 Content-Type: application/json
@@ -43,9 +43,9 @@ POST {{baseUrl}}/pessoas/
 Content-Type: application/json
 
 {
-    "email": "joao@gmail.com",
+    "email": "leo@gmail.com",
     "password": "9984884",
-    "nome": "João"
+    "nome": "Leo"
 }
 
 ### Atualiza um pessoa
@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 
 ### Essa rota apaga um pessoa
-DELETE {{baseUrl}}/pessoas/3/
+DELETE {{baseUrl}}/pessoas/12/
 
 
 ###
