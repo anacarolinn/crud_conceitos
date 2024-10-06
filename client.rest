@@ -27,3 +27,38 @@ Content-Type: application/json
 
 ### Essa rota apaga um recado
 DELETE {{baseUrl}}/recados/1/
+
+###
+
+# PESSOAS
+## Lista todos os pessoas
+GET {{baseUrl}}/pessoas/?limit=10&offset=10 
+
+// ?limit=15&offset=10 são parametros de query
+
+### Lista apenas um pessoa
+GET {{baseUrl}}/pessoas/2
+### Cria um recado
+POST {{baseUrl}}/pessoas/
+Content-Type: application/json
+
+{
+    "email": "anacarolina13698@gmail.com",
+    "password": "123456",
+    "nome": "Luiz"
+}
+
+### Atualiza um pessoa
+PATCH {{baseUrl}}/pessoas/9/
+Content-Type: application/json
+
+{
+    "password": "871554",
+    "nome": "Luiz"
+}
+
+### Essa rota apaga um pessoa
+DELETE {{baseUrl}}/pessoas/3/
+
+
+###
