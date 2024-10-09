@@ -8,6 +8,8 @@ import {
 @Injectable()
 export class ParseIntIdPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
+    console.log('ParseIntIdPipe executado');
+
     if (metadata.type !== 'param' || metadata.data !== 'id') {
       // se o tipo do metadata não for um param e se ee não tiver o nome 'id' vc vai pular não vai fazer nada
       // agora é possível usar ele no controller todo
