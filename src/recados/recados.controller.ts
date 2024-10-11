@@ -24,6 +24,7 @@ import { AddHeaderInterceptor } from 'src/common/interceptors/add-header.interce
 import { TimingConnectionInterceptor } from 'src/common/interceptors/timing-connection.interceptor';
 import { ErrorHandlingInterceptor } from 'src/common/interceptors/error-handling.interceptor';
 import { SimpleCacheInterceptor } from 'src/common/interceptors/simple-cache.interceptor';
+import { ChangeDataInterceptor } from 'src/common/interceptors/change-data.interceptor';
 
 // CRUD
 // Create -> POST -> Criar um recado
@@ -38,7 +39,7 @@ import { SimpleCacheInterceptor } from 'src/common/interceptors/simple-cache.int
 // DTO - Data Transfer Object -> Objeto de transferência de dados
 // DTO -> Objeto simples -> Validar dados / Transformar dados
 
-@UseInterceptors(SimpleCacheInterceptor)
+@UseInterceptors(ChangeDataInterceptor)
 @Controller('recados')
 export class RecadosController {
   constructor(private readonly recadosService: RecadosService) {}
