@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -53,7 +54,10 @@ export class RecadosController {
     console.log('RecadosController', req['user']);
     // return `Retorna todos os recados. Limit=${limit}, Offset=${offset}.`;
     const recados = await this.recadosService.findAll(paginationDto);
-    return recados;
+
+    throw new BadRequestException('MENSAGEM');
+
+    // return recados;
   }
 
   @UseInterceptors(AddHeaderInterceptor, ErrorHandlingInterceptor)
