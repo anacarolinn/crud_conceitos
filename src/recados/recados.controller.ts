@@ -12,6 +12,7 @@ import { RecadosService } from './recados.service';
 import { CreateRecadoDto } from './dto/create-recado.dto';
 import { UpdateRecadoDto } from './dto/update-recado.dto';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { ReqDataParam } from 'src/common/params/req-data-param.decorator';
 
 // CRUD
 // Create -> POST -> Criar um recado
@@ -31,7 +32,11 @@ export class RecadosController {
   constructor(private readonly recadosService: RecadosService) {}
 
   @Get()
-  async findAll(@Query() paginationDto: PaginationDto) {
+  async findAll(
+    @Query() paginationDto: PaginationDto,
+    @ReqDataParam('headers') method,
+  ) {
+    console.log(method);
     const recados = await this.recadosService.findAll(paginationDto);
     return recados;
   }
