@@ -2,10 +2,12 @@ import {
   BadRequestException,
   CallHandler,
   ExecutionContext,
+  Injectable,
   NestInterceptor,
 } from '@nestjs/common';
 import { catchError, throwError } from 'rxjs'; // utilizada quando eu não quero manipular os dados, eu só quero observar coisas acontecendo
 
+@Injectable()
 export class ErrorHandlingInterceptor implements NestInterceptor {
   async intercept(context: ExecutionContext, next: CallHandler<any>) {
     console.log('ErrorHandlingInterceptor executado ANTES');
