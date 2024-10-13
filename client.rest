@@ -1,66 +1,86 @@
 @baseUrl = http://localhost:3000
 
 # RECADOS
-## Lista todos os recados
-GET {{baseUrl}}/recados/?limit=10&offset=0
+### Lista todos os recados
+GET {{baseUrl}}/recados/
+?limit=10
+&offset=0
 Authorization: Bearer 123456
-
-// ?limit=15&offset=10 são parametros de query
-
 ### Lista apenas um recado
-GET {{baseUrl}}/recados/1
+GET {{baseUrl}}/recados/30/
 ### Cria um recado
 POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": "Criação aleatoria de recados",
+    "texto": "De Leo para Joana",
     "deId": 14,
-    "paraId": 10
-    }
+    "paraId": 12
+}
 ### Atualiza um recado
-PATCH {{baseUrl}}/recados/15/
+PATCH {{baseUrl}}/recados/34/
 Content-Type: application/json
 
 {
-    "texto": "De leo para pablo",
+    "texto": "De Leo para Joana",
     "lido": false
 }
+### Apaga um recado
+DELETE {{baseUrl}}/recados/34/
 
-### Essa rota apaga um recado
-DELETE {{baseUrl}}/recados/1/
 
-###
 
-# PESSOAS
-## Lista todos os pessoas
-GET {{baseUrl}}/pessoas/?limit=10&offset=10 
+# 
 
-// ?limit=15&offset=10 são parametros de query
 
-### Lista apenas um pessoa
-GET {{baseUrl}}/pessoas/2
-### Cria um recado
+
+# Pessoas
+### Lista todas as pessoas
+GET {{baseUrl}}/pessoas/
+?limit=10
+&offset=0
+### Lista apenas uma pessoa
+GET {{baseUrl}}/pessoas/14/
+### Cria uma pessoa
 POST {{baseUrl}}/pessoas/
 Content-Type: application/json
 
 {
-    "email": "leo@gmail.com",
-    "password": "9984884",
-    "nome": "Leo"
+    "email": "le2o@email.com",
+    "password": "123456",
+    "nome": "leo"
 }
-
-### Atualiza um pessoa
-PATCH {{baseUrl}}/pessoas/9/
+### Atualiza uma pessoa
+PATCH {{baseUrl}}/pessoas/16/
 Content-Type: application/json
 
 {
-    "password": "871554",
-    "nome": "Luiz"
+    "password": "aaaaaa"
 }
+### Apaga uma pessoa
+DELETE {{baseUrl}}/pessoas/16/
 
-### Essa rota apaga um pessoa
-DELETE {{baseUrl}}/pessoas/12/
 
 
-###
+#
+
+
+### AppControllerGetHello
+
+# @name AppControllerGetHello
+GET {{baseUrl}}/home/hello
+
+### ExemploDeRota
+
+# @name ExemploDeRota
+GET {{baseUrl}}/home/exemplo/
+
+### ConceitosManualController Home
+
+# @name ConceitosManualControllerHome
+GET {{baseUrl}}/conceitos-manual/
+
+### ConceitosAutomaticoController Home
+
+# @name ConceitosAutomaticoControllerHome
+GET {{baseUrl}}/conceitos-automatico/
