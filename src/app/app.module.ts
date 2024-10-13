@@ -10,10 +10,8 @@ import { RecadosModule } from 'src/recados/recados.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PessoasModule } from 'src/pessoas/pessoas.module';
 import { SimpleMiddleware } from 'src/common/middlewares/simple.middleware';
-import { OutroMiddleware } from 'src/common/middlewares/outro.middleware';
-import { APP_FILTER } from '@nestjs/core';
-import { MyExceptionFilter } from 'src/common/filters/my-exception.filter';
 import { ErrorExceptionFilter } from 'src/common/filters/error-exception.filters';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -43,7 +41,7 @@ import { ErrorExceptionFilter } from 'src/common/filters/error-exception.filters
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // a ordem dos middlewares importa
-    consumer.apply(SimpleMiddleware, OutroMiddleware).forRoutes({
+    consumer.apply(SimpleMiddleware).forRoutes({
       path: '*', // poderia ser a rota recados, ou pessoas, mas agora definimos para todas
       method: RequestMethod.ALL,
     });
