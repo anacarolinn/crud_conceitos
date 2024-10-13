@@ -1,5 +1,3 @@
-# Criando CRUD para explorar as possibilidades do nestJS
-
 _Não é possível ter 2 métodos com o mesmo nome, e isso é por padrão do
 javascript_
 
