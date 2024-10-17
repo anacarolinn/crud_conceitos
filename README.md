@@ -111,3 +111,32 @@ Guards podem ser adicionados globalmente, ou por módulo ou por rota.
 ### Parâmetros
 
 É bom quando vc está usando algo repetidas vezes, ai cria-se um param
+
+# Entendendo o sistema de injeção de depêndencia no NestJS
+
+**Tudo que é criado para um module de algo específico só pode ser usado nesse
+module, caso queira utilizar um provide do seu module de dentro para um module
+fora, será necessário exportar no de dentro e importar no de fora.**
+
+> ==**Dependência Circular:== É basicamente quando um módulo importa outro
+> módulo e esse outro módulo importa um módulo, fica em um círculo, em nest é
+> preciso acabar com esses possíveis erros**.
+
+==Para acabar com problemas de dependência circular:==
+
+`forwardRef(() => RecadosModule` -> Em um module
+
+`forwardRef(() => PessoasModule` -> Em outro module
+
+> [!NOTE] TESTES Não é possível testar coisas que tenham dependências, os testes
+> só funcionam se todas as dependências estiverem declaradas
+
+### Escopo de providers
+
+- `Scope.DEFAULT` -> O provider em questão é um singletons
+- `Scope.REQUEST` -> O provider em questão é instanciado a cada requisição
+- `Scope.TRANSIENT` -> É criada uma instancia do provider para cada classe que
+  injetar este provider
+
+> A maioria das pessoas e também o que se indica é que seja usado somente o
+> Scope.DEFAULT
