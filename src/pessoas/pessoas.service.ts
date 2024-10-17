@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  Scope,
 } from '@nestjs/common';
 import { CreatePessoaDto } from './dto/create-pessoa.dto';
 import { UpdatePessoaDto } from './dto/update-pessoa.dto';
@@ -9,7 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Pessoa } from './entities/pessoa.entity';
 import { Repository } from 'typeorm';
 
-@Injectable()
+@Injectable({ scope: Scope.DEFAULT })
 export class PessoasService {
   constructor(
     @InjectRepository(Pessoa)
@@ -42,6 +43,7 @@ export class PessoasService {
         id: 'desc',
       },
     });
+
     return pessoas;
   }
 
@@ -49,16 +51,18 @@ export class PessoasService {
     const pessoa = await this.pessoaRepository.findOneBy({
       id,
     });
+
     if (!pessoa) {
       throw new NotFoundException('Pessoa não encontrada');
     }
+
     return pessoa;
   }
 
   async update(id: number, updatePessoaDto: UpdatePessoaDto) {
     const dadosPessoa = {
-      nome: updatePessoaDto.nome,
-      passwordHash: updatePessoaDto.password,
+      nome: updatePessoaDto?.nome,
+      passwordHash: updatePessoaDto?.password,
     };
 
     const pessoa = await this.pessoaRepository.preload({
@@ -74,14 +78,7 @@ export class PessoasService {
   }
 
   async remove(id: number) {
-    const pessoa = await this.pessoaRepository.findOneBy({
-      id,
-    });
-
-    if (!pessoa) {
-      throw new NotFoundException('Pessoa não encontrada');
-    }
-
+    const pessoa = await this.findOne(id);
     return this.pessoaRepository.remove(pessoa);
   }
 }
